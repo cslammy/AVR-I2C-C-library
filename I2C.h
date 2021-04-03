@@ -1,3 +1,5 @@
+#include <stdint.h>
+
 /*
  * I2C.h
  *
@@ -13,11 +15,11 @@ void I2C_Start(void);
 
 void I2C_Stop(void);
 
-void I2C_Write(unsigned char dat);
+void I2C_Write(uint8_t dat);
 
-unsigned char I2C_ReadACK(void);
+uint8_t I2C_ReadACK(void);
 
 
-unsigned char I2C_ReadNACK(void);
+uint8_t I2C_ReadNACK(void);
 
 #endif /* I2C_H_  */

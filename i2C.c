@@ -10,6 +10,7 @@ Return value : none
 #include <util/delay.h>
 
 
+
 void I2C_Init()
 {
 	TWSR=0x00; //set presca1er bits to zero
@@ -53,7 +54,7 @@ I/P Arguments: unsigned char-->8bit data to be sent.
 Return value: none
 */
 
-void I2C_Write(unsigned char dat)
+void I2C_Write(uint8_t dat)
 {
 	TWDR = dat ;
 	TWCR = ((1<< TWINT) | (1<<TWEN));
@@ -68,7 +69,7 @@ Puts ACK on data line so subsequent I2C data reads can continue.
 Return value : Unsigned char(received byte)
 */
 
-unsigned char I2C_ReadACK(void)
+uint8_t I2C_ReadACK(void)
 {
 	TWCR = (1<<TWINT)|(1<<TWEN)|(1<<TWEA);
 	while ((TWCR & (1<<TWINT)) == 0);
@@ -78,7 +79,7 @@ unsigned char I2C_ReadACK(void)
 
 //read byte with NACK
 //used to indicate you are done with Reads
-unsigned char I2C_ReadNACK(void)
+uint8_t I2C_ReadNACK(void)
 {
 	TWCR = (1<<TWINT)|(1<<TWEN);
 	while ((TWCR & (1<<TWINT)) == 0);
